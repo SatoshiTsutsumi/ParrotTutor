@@ -1,0 +1,160 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "parrot tutor",
+      "intents": [
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.NavigateHomeIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.FallbackIntent",
+          "samples": []
+        },
+        {
+          "name": "AddWordIntent",
+          "slots": [
+            {
+              "name": "wordSlot",
+              "type": "AMAZON.SearchQuery"
+            }
+          ],
+          "samples": [
+            "add a word {wordSlot}",
+            "append a  word {wordSlot}",
+            "store a  word {wordSlot}",
+            "save a  word {wordSlot}",
+            "remember a  word {wordSlot}"
+          ]
+        },
+        {
+          "name": "LearnIntent",
+          "slots": [
+            {
+              "name": "countSlot",
+              "type": "AMAZON.NUMBER"
+            },
+            {
+              "name": "headingTypeSlot",
+              "type": "PluralHeadingType"
+            }
+          ],
+          "samples": [
+            "I want to learn {headingTypeSlot}",
+            "learn {headingTypeSlot}",
+            "speak {headingTypeSlot}",
+            "tell me {headingTypeSlot}",
+            "tell me {countSlot} {headingTypeSlot}",
+            "speak {countSlot} {headingTypeSlot}",
+            "learn {countSlot} {headingTypeSlot}",
+            "I want to learn {countSlot} {headingTypeSlot}"
+          ]
+        },
+        {
+          "name": "AddPhraseIntent",
+          "slots": [
+            {
+              "name": "phraseSlot",
+              "type": "AMAZON.SearchQuery"
+            }
+          ],
+          "samples": [
+            "remember a phrase {phraseSlot}",
+            "save a phrase {phraseSlot}",
+            "store a phrase {phraseSlot}",
+            "append a phrase {phraseSlot}",
+            "add a phrase {phraseSlot}"
+          ]
+        }
+      ],
+      "types": [
+        {
+          "values": [
+            {
+              "name": {
+                "value": "phrases"
+              }
+            },
+            {
+              "name": {
+                "value": "words"
+              }
+            }
+          ],
+          "name": "PluralHeadingType"
+        }
+      ]
+    },
+    "dialog": {
+      "intents": [
+        {
+          "name": "AddWordIntent",
+          "confirmationRequired": true,
+          "prompts": {
+            "confirmation": "Confirm.Intent.321024708461"
+          },
+          "slots": [
+            {
+              "name": "wordSlot",
+              "type": "AMAZON.SearchQuery",
+              "elicitationRequired": false,
+              "confirmationRequired": false,
+              "prompts": {}
+            }
+          ]
+        },
+        {
+          "name": "AddPhraseIntent",
+          "confirmationRequired": true,
+          "prompts": {
+            "confirmation": "Confirm.Intent.334458378973"
+          },
+          "slots": [
+            {
+              "name": "phraseSlot",
+              "type": "AMAZON.SearchQuery",
+              "elicitationRequired": false,
+              "confirmationRequired": false,
+              "prompts": {}
+            }
+          ]
+        }
+      ],
+      "delegationStrategy": "ALWAYS"
+    },
+    "prompts": [
+      {
+        "id": "Confirm.Intent.321024708461",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "{wordSlot} . Is it ok?"
+          }
+        ]
+      },
+      {
+        "id": "Confirm.Intent.334458378973",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "{phraseSlot} . Is it ok?"
+          }
+        ]
+      }
+    ]
+  },
+  "version": "7"
+}
+
